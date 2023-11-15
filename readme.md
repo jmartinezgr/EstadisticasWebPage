@@ -1,12 +1,6 @@
-<style>
-    .python-text {
-        font-weight: bold; /* Puedes ajustar el valor según tus preferencias */
-    }
-</style>
-
 # _Tú Primer Analisis_
 
-_Este proyecto fue diseñado por y gracias la materia "Programacion para la ingenieria" ... una clase optativa de la carrera de ingenieria en sistemas e informatica de la universidad nacional de colombia y mi gusto especial por la estadistica y los alcances que puede tener la tecnologia en conjunto con la matematica. En terminos generales este es un proyecto web que ayudara a las personas sin conocimientos de programacion a usar herramientas de manipulacion de datos con <span class="python-text" style="color: green;">Python</span> y poder visualizar y obtener resultados que podrian influir en sus estudios o investigaciones._
+_Este proyecto fue diseñado por y gracias la materia "Programacion para la ingenieria" ... una clase optativa de la carrera de ingenieria en sistemas e informatica de la universidad nacional de colombia y mi gusto especial por la estadistica y los alcances que puede tener la tecnologia en conjunto con la matematica. En terminos generales este es un proyecto web que ayudara a las personas sin conocimientos de programacion a usar herramientas de manipulacion de datos con **Python** y poder visualizar y obtener resultados que podrian influir en sus estudios o investigaciones._
 
 ## Comenzando 🚀
 
@@ -35,7 +29,7 @@ cd tu_carpeta_deseada
 git clone https://github.com/jmartinezgr/EstadisticasWebPage.git
 ```
 
-_Habiendo clonado el repositorio deberas acceder a la carpeta del proyecto de <span class="python-text" style="color: green;">Django</span>_
+_Habiendo clonado el repositorio deberas acceder a la carpeta del proyecto de **Django**_
 
 ```
 cd EstadisticasWebPage/TuPrimerAnilisis
@@ -45,7 +39,7 @@ _Habiendo ingresado a la carpeta ejecutar podras ver en la seccion de despliegue
 
 ## Despliegue 📦
 
-_Ejecutaras un comando para iniciar tu servidor local <span class="python-text" style="color: green;">Django</span> al que podras acceder con normalidad, y usar la app de la misma manera que harias con la version web, pero con la libertad de modificar su codigo y el almacenamiento de tu computadora_
+_Ejecutaras un comando para iniciar tu servidor local **Django** al que podras acceder con normalidad, y usar la app de la misma manera que harias con la version web, pero con la libertad de modificar su codigo y el almacenamiento de tu computadora_
 
 _Es hora de ejecutar el siguiente comando ... _
 
@@ -55,7 +49,7 @@ python manage.py runserver
 
 _Ahora podras verificar si la aplicacion de despliega correctamente en este [link](http://127.0.0.1:8000/). Es hora de que te diviertas usando la app 🙂 (Recuerda no cerrar la bash o tu simbolo del sistema para que la app siga funcionando, y cuando desees dejar de correr el servidor puedes hacerlo ejecutando el comando ctl + c )._
 
-_Podras encontrar mas informacion sobre como iniciar y manipular una aplicacion de <span class="python-text" style="color: green;">Django</span> en este [link]()._
+_Podras encontrar mas informacion sobre como iniciar y manipular una aplicacion de **Django** en este [link]()._
 
 ## Construido con 🛠️
 
@@ -88,11 +82,11 @@ _A felipe, sin el este proyecto jamas habria sido posible, y a mi novia que siem
 ## Expresiones de Gratitud 🎁
 
 * Comenta a otros sobre este proyecto 📢
-* Invita una cerveza 🍺 o un café ☕ a alguien del equipo. 
+* Invita una cerveza 🍺 o un café ☕ a alguien del equipo.
 * Da las gracias públicamente 🤓.
 * Dona con cripto a esta dirección: `0xf253fc233333078436d111175e5a76a649890000`
 * etc.
 
-
 ---
+
 ⌨️ con ❤️ por [jmartinezgr](https://github.com/jmartinezgr) 😊 Puedes contactarme en [jmartinezgr@unal.edu.co](mailto:jmartinezgr@unal.edu.co).
