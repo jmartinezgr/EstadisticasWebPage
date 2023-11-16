@@ -1,5 +1,7 @@
 # _Tú Primer Analisis_
 
+_**Aviso Imporante: Esta es una app que aun esta en desarrollo, y aun no esta implementada en dispositivos moviles, limitese a usarla en laptops y computadoras.**_
+
 _Este proyecto fue diseñado por y gracias la materia "Programacion para la ingenieria" ... una clase optativa de la carrera de ingenieria en sistemas e informatica de la universidad nacional de colombia y mi gusto especial por la estadistica y los alcances que puede tener la tecnologia en conjunto con la matematica. En terminos generales este es un proyecto web que ayudara a las personas sin conocimientos de programacion a usar herramientas de manipulacion de datos con **Python** y poder visualizar y obtener resultados que podrian influir en sus estudios o investigaciones._
 
 ## Comenzando 🚀
@@ -47,7 +49,7 @@ _Es hora de ejecutar el siguiente comando ... _
 python manage.py runserver
 ```
 
-_Ahora podras verificar si la aplicacion de despliega correctamente en este [link](http://127.0.0.1:8000/). Es hora de que te diviertas usando la app 🙂 (Recuerda no cerrar la bash o tu simbolo del sistema para que la app siga funcionando, y cuando desees dejar de correr el servidor puedes hacerlo ejecutando el comando ctl + c )._
+_Ahora podras verificar si la aplicacion de despliega correctamente en este [link](http://127.0.0.1:8000/). Es hora de que te diviertas usando la app 🙂 ( Recuerda no cerrar la bash o tu simbolo del sistema para que la app siga funcionando, y cuando desees dejar de correr el servidor puedes hacerlo ejecutando el comando ctl + c )._
 
 _Podras encontrar mas informacion sobre como iniciar y manipular una aplicacion de **Django** en este [link]()._
 
@@ -67,13 +69,13 @@ _Menciona las herramientas que utilizaste para crear tu proyecto_
 _Menciona a todos aquellos que ayudaron a levantar el proyecto desde sus inicios_
 
 * **Juan Jose Martinez Grisales** - *Desarrollo de la aplicacion* - [jmartinezgr](https://github.com/jmartinezgr)
-* **Felipe Aldana** - *Conceptos Estadisticos* - [jmartinezgr@unal.edu.co](mailto:jmartinezgr@unal.edu.co)
-* **Gabriel Awad** - *Profesor* - [jmartinezgr@unal.edu.co](mailto:jmartinezgr@unal.edu.co)
+* **Felipe Aldana** - *Conceptos Estadisticos* - [jaldanam@unal.edu.co](mailto:jaldanam@unal.edu.co)
+* **Gabriel Awad** - *Profesor* - [gawad@unal.edu.co](mailto:gawad@unal.edu.co)
 * **Andrés Villanueva** - *Plantilla del Readme* - [villanuevand](https://github.com/villanuevand)
 
 ## Licencia 📄
 
-Este proyecto está bajo la Licencia (Tu Licencia) - mira el archivo [LICENSE.md](LICENSE.md) para detalles
+Este proyecto está bajo la Licencia GNU GENERAL PUBLIC LICENSE Version 3, 29 June 2007 - mira el archivo [LICENSE.md](LICENSE.md) para más detalles.
 
 ## Agredecimientos❤️
 
