@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect
 from django.http import Http404
 import pandas as pd
+import numpy as np
 
 # Create your views here.
 
@@ -8,25 +9,63 @@ def home(request):
     
     return render(request,'general_pages/home.html')
 
+import pandas as pd
+from django.shortcuts import render, redirect
+
 def drop(request, actividad=''):
     if request.method == 'POST':
         file = request.FILES.get('hidden_file_input')
         if file:
-            print('YES')
-            df = pd.read_excel(file)
-            column_number = request.POST.get('manual_data', [0])
-            if column_number:
-                column_number = int(column_number[0])
-                print('Número de Columna seleccionada:', column_number)
-                # Ahora puedes usar el número de columna en tus operaciones
-                if column_number < len(df.columns):
-                    selected_column = df.iloc[:, column_number]
-                    print(selected_column.head())
-                    # Realiza tus operaciones con la columna seleccionada
+            # Verificar el tipo de archivo
+            allowed_extensions = ['xlsx', 'csv']
+            file_extension = file.name.split('.')[-1].lower()
+
+            if file_extension in allowed_extensions:
+                # Cargar el archivo con pandas
+                if file_extension == 'xlsx':
+                    df = pd.read_excel(file)
+                elif file_extension == 'csv':
+                    df = pd.read_csv(file)
+
+                # Obtener las columnas especificadas en el textarea
+                manual_data = request.POST.get('manual_data')
+                selected_columns = []
+
+                if manual_data:
+                    # Dividir las columnas especificadas por comas y convertirlas a una lista
+                    selected_columns = [int(col.strip()) for col in manual_data.split(',')]
+
+                    # Filtrar el DataFrame por las columnas seleccionadas
+                    df = df.iloc[:, selected_columns]
+
+                    print('Columnas Seleccionadas:')
+                    print(df.head())
+
+                return redirect('services_without_section')
+            else:
+                print('Tipo de archivo no permitido')
         else:
             manual_data = request.POST.get('manual_data').split(',')
-            print(manual_data)
-        #return redirect('services_without_section')
+
+            # Convertir manual_data a un arreglo de NumPy
+            manual_data_array = np.array(manual_data, dtype=float)
+
+            # Realizar acciones según la solicitud
+            action = request.POST.get('action')  # Asumiendo que hay un campo 'action' en tu formulario
+
+            #if action == 'grafico_de_barras':
+                # Lógica para grafico_de_barras
+                # Puedes pasar manual_data_array a tu vista para generar el gráfico
+
+                #return render(request, 'general_pages/grafico_de_barras.html', {'data': manual_data_array})
+
+            #elif action == 'grafico_pastel':
+                # Lógica para grafico_pastels
+                #return render(request, 'general_pages/grafico_pastel.html', {'data': manual_data_array})
+
+            #elif action == 'box_plot_1_variable':
+                #return render(request, 'general_pages/box_plot_1_variable.html', {'data': manual_data_array})
+
     return render(request, 'general_pages/drop.html')
 
 def services(request,seccion = ''):
