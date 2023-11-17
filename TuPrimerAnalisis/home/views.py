@@ -1,11 +1,33 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.http import Http404
+import pandas as pd
 
 # Create your views here.
 
 def home(request):
     
     return render(request,'general_pages/home.html')
+
+def drop(request, actividad=''):
+    if request.method == 'POST':
+        file = request.FILES.get('hidden_file_input')
+        if file:
+            print('YES')
+            df = pd.read_excel(file)
+            column_number = request.POST.get('manual_data', [0])
+            if column_number:
+                column_number = int(column_number[0])
+                print('Número de Columna seleccionada:', column_number)
+                # Ahora puedes usar el número de columna en tus operaciones
+                if column_number < len(df.columns):
+                    selected_column = df.iloc[:, column_number]
+                    print(selected_column.head())
+                    # Realiza tus operaciones con la columna seleccionada
+        else:
+            manual_data = request.POST.get('manual_data').split(',')
+            print(manual_data)
+        #return redirect('services_without_section')
+    return render(request, 'general_pages/drop.html')
 
 def services(request,seccion = ''):
 
