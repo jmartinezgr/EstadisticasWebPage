@@ -1,0 +1,114 @@
+<!-- home.html -->
+{% extends 'layouts/layouts.html' %}
+{% load static %}
+
+<!-- Se carga el bloque del titulo, lo cual permite sobreescribir en el home el titulo y el señalar que es el inicio -->
+
+{% block title %}
+TuPrimerAnalisis - Servicios
+{% endblock %}
+
+<!-- Se carga el bloque del navbar, lo cual permite sobreescribir en el home el elemento de la navbar en el que se esta situado -->
+
+{% block navbar %}
+<a href="{% url 'home' %}">
+    Inicio
+</a>
+<a href="{% url 'services_with_section' 'graficos' %}" class="{% if seccion == 'graficos' %}active{% endif %}">
+    Graficos
+</a>
+<a href="{% url 'services_with_section' 'resumenes' %}" class="{% if seccion == 'resumenes' %}active{% endif %}">
+    Resumenes
+</a>
+<a href="{% url 'services_with_section' 'pruebas' %}" class="{% if seccion == 'pruebas' %}active{% endif %}">
+    Pruebas
+</a>
+{% if user.is_authenticate %}
+<a href="" >
+    Cerrar Sesion
+</a>
+{% else %}
+<a href="" >
+    Iniciar Sesion
+</a>
+{% endif %}
+{% endblock navbar %}
+    
+<!-- Se carga el bloque del contect, lo cual permite sobreescribir en el home el contenido especifico de la pestaña -->
+
+{% block content %}
+
+<h1 id="text-services">
+{% if seccion == 'pruebas' %} Estas son nuestras   {% else %} Estos son nuestros {% endif %}
+    {% if seccion %}     
+        {{seccion}}
+    {% else %}
+        servicios
+    {% endif %}
+</h1>
+
+<div class="contenedor_servicios">
+    {% if servicios.0.0.name%}  
+        {% for clases_servcios in servicios %}
+            {% for servicio in clases_servcios %}
+            <div class="card_servicios">
+                <div class="header_servicios">
+                {% if servicio.imagen %}
+                    <img src="{{servicio.imagen}}" alt="Source Not Founded">
+                {% else %}
+                    <img src="https://raw.githubusercontent.com/jmartinezgr/FotosToMyWebs/main/TuPrimerAnalisis/services/reemplazo.png" alt="Picture not found">
+                {% endif %}
+                </div>
+                <div class="card_body_servicios">
+                    <h2 class="card-title">
+                        {{servicio.name}}
+                    </h2>
+                    <p class="card-description">
+                        {{servicio.descripcion}}
+                    </p>                    
+                    {% if servicio.uso == 'sin_registro' or user.is_authenticated %}
+                        <a href="#" class="btn_services"> 
+                            Usar Ahora
+                        </a>
+                    {% else %}
+                        <a href="#" class="btn_services"> 
+                            Registrate para Usarlo
+                        </a>
+                    {% endif %}
+                </div>
+            </div>
+        {% endfor %}
+    {% endfor %}
+    {% else %}
+        {% for servicio in servicios %}
+        <div class="card_servicios">
+            <div class="header_servicios">
+            {% if servicio.imagen %}
+                <img src="{{servicio.imagen}}" alt="https://raw.githubusercontent.com/jmartinezgr/FotosToMyWebs/main/TuPrimerAnalisis/services/reemplazo.png">
+            {% else %}
+                <img src="https://raw.githubusercontent.com/jmartinezgr/FotosToMyWebs/main/TuPrimerAnalisis/services/reemplazo.png" alt="Picture not found">
+            {% endif %}
+            </div>
+            <div class="card_body_servicios">
+                <h2 class="card-title">
+                    {{servicio.name}}
+                </h2>
+                <p class="card-description">
+                    {{servicio.descripcion}}
+                </p>
+                {% if servicio.uso == 'sin_registro' or user.is_authenticated %}
+                    <a href="#" class="btn_services"> 
+                        Usar Ahora
+                    </a>
+                {% else %}
+                    <a href="#" class="btn_services"> 
+                        Registrate para Usarlo
+                    </a>
+                {% endif %}
+            </div>
+        </div>
+        {% endfor %}
+    {% endif %}
+</div>
+
+{% endblock %}

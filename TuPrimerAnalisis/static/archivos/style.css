@@ -47,6 +47,10 @@ header{
     color: #fff;
 }
 
+img{
+    display: block;
+}
+
 .parallax { 
     position: relative;
     display: flex;
@@ -70,6 +74,10 @@ header{
     margin-top: 140px;
 }
 
+.buttons-container{
+    color: #25735c  ;
+}
+
 .btn {
     background-color: #fff;
     color: #25735c;
@@ -82,7 +90,12 @@ header{
     box-shadow: 2px 2px 4px rgba(0,0,0,.2);
 }
 
-.btn:hover {
+.btn{
+    color: #25735c; 
+    text-decoration: none;
+}
+
+.btn:hover{
     background-color: #359381;
     color: #fff;
 }
@@ -116,4 +129,97 @@ header{
     font-size: 1em;
     color: #fff;
     font-weight: 300;
+    text-align: justify;
+}
+
+/* SERVICES */
+
+.card_servicios img{
+    width: 100%;
+    display: block;
+    border-radius: 8px 8px 0 0;
+    padding-left: 25px;
+    padding-top: 25px;
+    padding-right: 25px;
+    padding-bottom: 10px;
+    min-height: 360px;
+    max-height: 360px ;
+    overflow: hidden;
+}
+
+.card_header_servicios{
+    border-radius: 8px;
+    max-width: 100px;
+}
+
+#text-services{
+    text-align: center;
+    color: #25735c;
+    margin-top: 120px;
+}
+
+.contenedor_servicios{
+    width: 90%;
+    max-width: 1200px;
+    margin: 50px auto;
+    margin-bottom: 100px;
+}
+
+.card_servicios{
+    background-color: #fff;
+    margin-bottom: 10px;
+    border-radius: 20px;
+    box-shadow: 2px 2px 4px rgba(0,0,0,.2);
+}
+
+.card_body_servicios{
+    padding: 20px 15px;
+    text-align: justify;
+}
+
+.btn_services{
+    background-color: #25735c;
+    color: #fff;
+    display: block;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    margin-top: 10px;
+    border-radius: 8px;
+}
+
+.btn_services:hover{
+    background-color: #359381;
+    color: #f9f9f9 ;
+    transition: 0.8s;
+}
+
+@media(min-width:480px){
+    .contenedor_servicios{
+        display: grid;
+        grid-template-columns: repeat(3,1fr);
+        gap: 15px;
+    }
+
+    .card_servicios{
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .card_header_servicios{
+        height: 300px;
+        overflow: hidden;
+    }
+
+    .card_body_servicios{
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .card-description{
+        flex-grow: 1;
+
+    }
 }

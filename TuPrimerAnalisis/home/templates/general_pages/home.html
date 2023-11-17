@@ -11,16 +11,17 @@ TuPrimerAnalisis - Inicio
 <!-- Se carga el bloque del navbar, lo cual permite sobreescribir en el home el elemento de la navbar en el que se esta situado -->
 
 {% block navbar %}
-<a href="" class= "active">
+<a href="{% url 'home' %}"  class= "active">
     Inicio
 </a>
-<a href="">
+
+<a href="{% url 'services_with_section' 'graficos' %}" >
     Graficos
 </a>
-<a href="">
+<a href="{% url 'services_with_section' 'resumenes' %}">
     Resumenes
 </a>
-<a href="">
+<a href="{% url 'services_with_section' 'pruebas' %}">
     Pruebas
 </a>
 {% if user.is_authenticate %}
@@ -34,26 +35,25 @@ TuPrimerAnalisis - Inicio
 {% endif %}
 {% endblock navbar %}
     
-
 <!-- Se carga el bloque del contect, lo cual permite sobreescribir en el home el contenido especifico de la pestaña -->
 
 {% block content %}
 <section class="parallax">
-    <img src="{% static 'images/hill1.png'%}" id="hill1">
-    <img src="{% static 'images/hill2.png'%}" id="hill2">
-    <img src="{% static 'images/hill3.png'%}" id="hill3">
-    <img src="{% static 'images/hill4.png'%}" id="hill4">
-    <img src="{% static 'images/hill5.png'%}" id="hill5">
-    <img src="{% static 'images/tree.png'%}" id="tree">
+    <img src="https://raw.githubusercontent.com/jmartinezgr/FotosToMyWebs/main/TuPrimerAnalisis/home/hill1.png" id="hill1">
+    <img src="https://raw.githubusercontent.com/jmartinezgr/FotosToMyWebs/main/TuPrimerAnalisis/home/hill2.png" id="hill2">
+    <img src="https://raw.githubusercontent.com/jmartinezgr/FotosToMyWebs/main/TuPrimerAnalisis/home/hill3.png" id="hill3">
+    <img src="https://raw.githubusercontent.com/jmartinezgr/FotosToMyWebs/main/TuPrimerAnalisis/home/hill4.png" id="hill4">
+    <img src="https://raw.githubusercontent.com/jmartinezgr/FotosToMyWebs/main/TuPrimerAnalisis/home/hill5.png" id="hill5">
+    <img src="https://raw.githubusercontent.com/jmartinezgr/FotosToMyWebs/main/TuPrimerAnalisis/home/tree.png" id="tree">
     <h2 id="text">
-        Haz tu primer analisis con nosotros
+        ¡Haz tu primer analisis con nosotros!
     </h2>
     <div class="buttons-container" id= 'home_buttons'>
-        <button class="btn">Inicia sin registrarte</button>
-        <button class="btn">Regístrate para disfrutar</button>
+        <a class="btn" href="{%url 'services_without_section'%}">Inicia sin registrarte</a>
+        <a class="btn" href="">Regístrate para disfrutar</a>
     </div>
-    <img src="{% static 'images/leaf.png'%}" id="leaf">
-    <img src="{% static 'images/plant.png'%}" id="plant">   
+    <img src="https://raw.githubusercontent.com/jmartinezgr/FotosToMyWebs/main/TuPrimerAnalisis/home/leaf.png" id="leaf">
+    <img src="https://raw.githubusercontent.com/jmartinezgr/FotosToMyWebs/main/TuPrimerAnalisis/home/plant.png" id="plant">   
 </section>
 
 <section class="sec">
