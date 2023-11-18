@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', function() {
             if (validExtensions.includes(fileType)) {
                 hiddenFileInput.files = files;
                 displayFileName(hiddenFileInput);
-                textArea.placeholder='Ingresa qué columna o columnas quieres usar, sepáralas por comas y numéralas desde 0';
+                textArea.placeholder='Ingresa qué columna quieres usar numérala desde 0';
             } else {
                 alert("Archiv No Valido");
             }

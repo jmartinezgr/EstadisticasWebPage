@@ -315,6 +315,20 @@ textarea, #column-number-container {
     background-color: #359381;
 }
 
+/* Agrega estos estilos al final de tu hoja de estilos CSS */
+
+.center-image {
+    display: block;
+    margin: 0 auto; /* Centra horizontalmente */
+    max-width: 100%; /* Evita que la imagen sobrepase su contenedor */
+    height: auto; /* Permite que la altura se ajuste automáticamente */
+}
+
+.graph-container{
+    max-width: 100%;
+    max-height: 100%;
+}
+
 /* RESPONSIVE */
 
 @media(min-width:480px){

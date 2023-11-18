@@ -1,0 +1,53 @@
+<!-- home.html -->
+{% extends 'layouts/layouts.html' %}
+{% load static %}
+
+{% block title %}
+TuPrimerAnalisis - Sube tu archivo
+{% endblock %}
+
+{% block navbar %}
+<a href="{% url 'home' %}">
+    Inicio
+</a>
+<a href="{% url 'services_with_section' 'graficos' %}" class="{% if seccion == 'graficos' %}active{% endif %}">
+    Graficos
+</a>
+<a href="{% url 'services_with_section' 'resumenes' %}" class="{% if seccion == 'resumenes' %}active{% endif %}">
+    Resumenes
+</a>
+<a href="{% url 'services_with_section' 'pruebas' %}" class="{% if seccion == 'pruebas' %}active{% endif %}">
+    Pruebas
+</a>
+{% if user.is_authenticate %}
+<a href="" >
+    Cerrar Sesion
+</a>
+{% else %}
+<a href="" >
+    Iniciar Sesion
+</a>
+{% endif %}
+{% endblock navbar %}
+
+{% block content %}
+    
+<div class="drop_box_container">
+    <div class="drop_container">
+        <h3>Grafico</h3>
+        <!-- Mostrar la imagen generada en lugar de la zona de arrastrar y soltar -->
+        <div class="graph-container">
+            <img src="data:image/png;base64,{{ image_base64 }}" alt="Gráfico" class="center-image" id="_drag">
+        </div>           
+        <!-- Cambiar el botón para que sea de descarga -->
+        <div>
+            <a href="data:image/png;base64,{{ image_base64 }}" download="grafico.png">
+                <button class="drop_button_1" type="button">Descargar</button>
+            </a>
+        </div>
+    </div>
+</div>
+
+<script src="{% static 'archivos/script2.js' %}"></script>
+{% endblock %}
+

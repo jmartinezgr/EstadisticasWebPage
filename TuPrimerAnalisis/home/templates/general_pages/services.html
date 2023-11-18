@@ -67,7 +67,7 @@ TuPrimerAnalisis - Servicios
                         {{servicio.descripcion}}
                     </p>                    
                     {% if servicio.uso == 'sin_registro' or user.is_authenticated %}
-                        <a href="#" class="btn_services"> 
+                        <a href="{%url 'drop_files_info' servicio.name %}" class="btn_services"> 
                             Usar Ahora
                         </a>
                     {% else %}
@@ -97,7 +97,7 @@ TuPrimerAnalisis - Servicios
                     {{servicio.descripcion}}
                 </p>
                 {% if servicio.uso == 'sin_registro' or user.is_authenticated %}
-                    <a href="#" class="btn_services"> 
+                    <a href="{%url 'drop_files_info' servicio.name %}" class="btn_services"> 
                         Usar Ahora
                     </a>
                 {% else %}

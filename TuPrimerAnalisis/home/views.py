@@ -2,6 +2,13 @@ from django.shortcuts import render,redirect
 from django.http import Http404
 import pandas as pd
 import numpy as np
+import matplotlib.pyplot as plt
+from io import BytesIO
+import base64
+import numpy as np
+from django.urls import reverse
+from django.http import HttpResponseRedirect
+from urllib.parse import urlencode,parse_qs
 
 # Create your views here.
 
@@ -9,8 +16,8 @@ def home(request):
     
     return render(request,'general_pages/home.html')
 
-import pandas as pd
-from django.shortcuts import render, redirect
+def show_grafico(request, image_base64, data, pd):
+    return render(request, 'general_pages/show_grafico.html', {'image_base64': image_base64, 'data': data, 'pd': pd})
 
 def drop(request, actividad=''):
     if request.method == 'POST':
@@ -32,40 +39,94 @@ def drop(request, actividad=''):
                 selected_columns = []
 
                 if manual_data:
-                    # Dividir las columnas especificadas por comas y convertirlas a una lista
-                    selected_columns = [int(col.strip()) for col in manual_data.split(',')]
-
-                    # Filtrar el DataFrame por las columnas seleccionadas
-                    df = df.iloc[:, selected_columns]
-
-                    print('Columnas Seleccionadas:')
-                    print(df.head())
-
-                return redirect('services_without_section')
-            else:
-                print('Tipo de archivo no permitido')
+                    data = df.iloc[:, int(manual_data)]
+                    manual_data_array = np.array(data) 
         else:
             manual_data = request.POST.get('manual_data').split(',')
-
             # Convertir manual_data a un arreglo de NumPy
-            manual_data_array = np.array(manual_data, dtype=float)
+            manual_data_array = np.array(manual_data, dtype=int)
 
-            # Realizar acciones según la solicitud
-            action = request.POST.get('action')  # Asumiendo que hay un campo 'action' en tu formulario
+            if not manual_data_array.size:
+                print('No se proporcionaron datos')
+                return render(request, 'general_pages/drop.html')
 
-            #if action == 'grafico_de_barras':
-                # Lógica para grafico_de_barras
-                # Puedes pasar manual_data_array a tu vista para generar el gráfico
+        if actividad == 'Grafico de Barras':
+            try:
+                
+                # Crear el objeto BytesIO antes de guardar la figura
+                image_stream = BytesIO()
 
-                #return render(request, 'general_pages/grafico_de_barras.html', {'data': manual_data_array})
+                ocurrencias = np.bincount(manual_data_array)
+                valores = np.arange(len(ocurrencias))
 
-            #elif action == 'grafico_pastel':
-                # Lógica para grafico_pastels
-                #return render(request, 'general_pages/grafico_pastel.html', {'data': manual_data_array})
+                # Colores diferentes para cada barra
+                colores = plt.cm.viridis(np.linspace(0, 1, len(ocurrencias)))
 
-            #elif action == 'box_plot_1_variable':
-                #return render(request, 'general_pages/box_plot_1_variable.html', {'data': manual_data_array})
+                plt.bar(valores, ocurrencias, width=0.8, align='center', color=colores)
+                plt.xlabel('Valor')
+                plt.ylabel('Frecuencia')
+                plt.title('Histograma de ocurrencias')
 
+                # Agregar labels
+                for valor, frecuencia in zip(valores, ocurrencias):
+                    plt.text(valor, frecuencia, str(frecuencia), ha='center', va='bottom')
+
+                plt.savefig(image_stream, format='png')
+                image_stream.seek(0)
+                plt.close()
+
+                image_base64 = base64.b64encode(image_stream.read()).decode('utf-8')
+
+                return show_grafico(request, image_base64, manual_data_array, True if file else False)
+            
+            except RuntimeError:
+                raise Http404("Sección no válida")
+
+        elif actividad == 'Grafico de Pastel':
+            try:
+                # Crear el objeto BytesIO antes de guardar la figura
+                image_stream = BytesIO()
+
+                # Graficar el gráfico de pastel
+                ocurrencias = np.bincount(manual_data_array)
+                labels = np.arange(len(ocurrencias)).astype(str)
+                plt.pie(ocurrencias, labels=labels, autopct='%1.1f%%', startangle=140)
+                plt.title(f'Gráfico de Pastel - {manual_data}')
+                # Puedes personalizar el gráfico según tus necesidades
+                plt.axis('equal')  # Asegura que el gráfico de pastel se vea circular
+                plt.title('Gráfico de Pastel de Ocurrencias')
+                # Guardar la figura en un BytesIO para mostrarla en la plantilla
+                plt.savefig(image_stream, format='png')
+                image_stream.seek(0)
+                plt.close()
+
+                # Convertir la imagen a base64 para mostrarla en la plantilla
+                image_base64 = base64.b64encode(image_stream.read()).decode('utf-8')
+
+                return show_grafico(request, image_base64, ocurrencias, True if file else False)
+            except RuntimeError:
+                raise Http404("Sección no válida")
+        elif actividad == 'Grafico de Caja 1 Variable':
+            try:
+                # Lógica para el gráfico de caja
+                image_stream = BytesIO()
+
+                # Crea el gráfico de caja
+                plt.boxplot(manual_data_array, vert=False)
+                plt.xlabel('Valores')
+                plt.title('Gráfico de Caja de una Sola Variable')
+
+                # Guarda la figura en un BytesIO para mostrarla en la plantilla
+                plt.savefig(image_stream, format='png')
+                image_stream.seek(0)
+                plt.close()
+
+                # Convierte la imagen a base64 para mostrarla en la plantilla
+                image_base64 = base64.b64encode(image_stream.read()).decode('utf-8')
+
+                return show_grafico(request, image_base64, [], True if file else False)
+            except RuntimeError:
+                raise Http404("Sección no válida")
     return render(request, 'general_pages/drop.html')
 
 def services(request,seccion = ''):
