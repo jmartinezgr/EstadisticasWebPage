@@ -1,6 +1,6 @@
 # _Tú Primer Analisis_
 
-_**Aviso Imporante: Esta es una app que aun esta en desarrollo, y aun no esta implementada en dispositivos moviles, limitese a usarla en laptops y computadoras.**_
+_**Aviso Imporante: Esta es una app que aun esta en desarrollo, y aun no esta implementada en dispositivos moviles, limitese a usarla en laptops y computadoras. Visita la demo aqui ([Demo](https://easyestadistica.pythonanywhere.com/))**_
 
 _Este proyecto fue diseñado por y gracias la materia "Programacion para la ingenieria" ... una clase optativa de la carrera de ingenieria en sistemas e informatica de la universidad nacional de colombia y mi gusto especial por la estadistica y los alcances que puede tener la tecnologia en conjunto con la matematica. En terminos generales este es un proyecto web que ayudara a las personas sin conocimientos de programacion a usar herramientas de manipulacion de datos con **Python** y poder visualizar y obtener resultados que podrian influir en sus estudios o investigaciones._
 
