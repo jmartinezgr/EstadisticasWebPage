@@ -1,4 +1,5 @@
 // script2.js
+
 document.addEventListener('DOMContentLoaded', function() {
     const dragArea = document.querySelector('.drag_area');
     const hiddenFileInput = document.getElementById('hidden_file_input');
@@ -25,9 +26,11 @@ document.addEventListener('DOMContentLoaded', function() {
             if (validExtensions.includes(fileType)) {
                 hiddenFileInput.files = files;
                 displayFileName(hiddenFileInput);
-                textArea.placeholder='Ingresa qué columna quieres usar numérala desde 0';
+                console.log(header.textContent)
+                header.textContent = "Arrastra de nuevo & Cambia tu archivo";
+                textArea.placeholder ='Ingresa qué columna quieres usar numérala desde 0';
             } else {
-                alert("Archiv No Valido");
+                alert("Archivo No Valido");
             }
         }
     });

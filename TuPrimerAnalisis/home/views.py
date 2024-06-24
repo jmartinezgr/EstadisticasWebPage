@@ -6,9 +6,6 @@ import matplotlib.pyplot as plt
 from io import BytesIO
 import base64
 import numpy as np
-from django.urls import reverse
-from django.http import HttpResponseRedirect
-from urllib.parse import urlencode,parse_qs
 
 # Create your views here.
 
@@ -36,7 +33,6 @@ def drop(request, actividad=''):
 
                 # Obtener las columnas especificadas en el textarea
                 manual_data = request.POST.get('manual_data')
-                selected_columns = []
 
                 if manual_data:
                     data = df.iloc[:, int(manual_data)]
